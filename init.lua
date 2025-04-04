@@ -5,6 +5,9 @@ vim.g.maplocalleader = ' '
 -- Set nerdfont
 vim.g.have_nerd_font = true
 
+-- Cursor in block mode on every mode
+vim.opt.guicursor = 'n-v-i-c:block'
+
 -- Make line numbers relative default
 vim.opt.number = true
 vim.opt.relativenumber = true
