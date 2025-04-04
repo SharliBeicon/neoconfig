@@ -80,6 +80,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.g.base46_cache = vim.fn.stdpath 'data' .. '/base46_cache/'
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -116,7 +118,10 @@ require('lazy').setup({
     },
   },
 })
+--
 
-vim.cmd.colorscheme 'kanagawa'
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+  dofile(vim.g.base46_cache .. v)
+end
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,5 +1,34 @@
 return {
-  { 'nvzone/showkeys', cmd = 'ShowkeysToggle' },
+  {
+    'nvchad/ui',
+    config = function()
+      require 'nvchad'
+    end,
+  },
+  {
+    'nvchad/base46',
+    lazy = true,
+    build = function()
+      require('base46').load_all_highlights()
+    end,
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    event = 'User FilePost',
+    opts = {
+      indent = { char = '│', highlight = 'IblChar' },
+      scope = { char = '│', highlight = 'IblScopeChar' },
+    },
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. 'blankline')
+
+      local hooks = require 'ibl.hooks'
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require('ibl').setup(opts)
+
+      dofile(vim.g.base46_cache .. 'blankline')
+    end,
+  },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
