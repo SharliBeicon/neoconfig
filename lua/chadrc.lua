@@ -11,11 +11,11 @@ local options = {
 
   ui = {
     cmp = {
-      icons_left = false, -- only for non-atom styles!
-      style = 'default', -- default/flat_light/flat_dark/atom/atom_colored
+      icons_left = true, -- only for non-atom styles!
+      style = 'flat_dark', -- default/flat_light/flat_dark/atom/atom_colored
       abbr_maxwidth = 60,
       format_colors = {
-        tailwind = false, -- will work for css lsp too
+        tailwind = true, -- will work for css lsp too
         icon = '󱓻',
       },
     },
@@ -27,7 +27,7 @@ local options = {
       theme = 'minimal', -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = 'round',
+      separator_style = 'block',
       order = nil,
       modules = nil,
     },
@@ -88,7 +88,7 @@ local options = {
   lsp = { signature = true },
 
   cheatsheet = {
-    theme = 'grid', -- simple/grid
+    theme = 'simple', -- simple/grid
     excluded_groups = { 'terminal (t)', 'autopairs', 'Nvim', 'Opens' }, -- can add group name or with mode
   },
 

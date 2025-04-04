@@ -3,6 +3,7 @@ local map = vim.keymap.set
 return {
   {
     'nvchad/ui',
+    lazy = false,
     config = function()
       require 'nvchad'
 
@@ -50,12 +51,10 @@ return {
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
+      dofile(vim.g.base46_cache .. 'git'),
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        delete = { text = '󰍵' },
+        changedelete = { text = '󱕖' },
       },
     },
   },
