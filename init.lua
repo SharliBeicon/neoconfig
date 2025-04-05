@@ -35,6 +35,10 @@ vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
 vim.opt.timeoutlen = 300
 
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -74,6 +78,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Cheatsheet of commands
 vim.keymap.set('n', '<leader>ch', '<cmd>NvCheatsheet<CR>', { desc = 'toggle nvcheatsheet' })
 
+-- Select theme
+vim.keymap.set('n', '<leader>th', function()
+  require('nvchad.themes').open()
+end, { desc = 'telescope nvchad themes' })
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -110,6 +119,10 @@ vim.api.nvim_create_autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
     end
   end,
 })
+
+-- Border to floating windows
+vim.api.nvim_set_hl(0, 'HoverBorder', { fg = '#e86671', bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#61afef', bg = 'NONE' })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

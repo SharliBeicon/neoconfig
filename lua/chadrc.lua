@@ -1,5 +1,4 @@
 local options = {
-
   base46 = {
     theme = 'kanagawa', -- default theme
     hl_add = {},
@@ -12,7 +11,7 @@ local options = {
   ui = {
     cmp = {
       icons_left = true, -- only for non-atom styles!
-      style = 'flat_dark', -- default/flat_light/flat_dark/atom/atom_colored
+      style = 'default', -- default/flat_light/flat_dark/atom/atom_colored
       abbr_maxwidth = 60,
       format_colors = {
         tailwind = true, -- will work for css lsp too
@@ -35,7 +34,7 @@ local options = {
     -- lazyload it when there are 1+ buffers
     tabufline = {
       enabled = true,
-      lazyload = false,
+      lazyload = true,
       order = { 'treeOffset', 'buffers', 'tabs', 'btns' },
       modules = nil,
       bufwidth = 21,
