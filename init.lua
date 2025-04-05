@@ -60,6 +60,10 @@ vim.opt.confirm = true
 -- set options for insert completion (ins-completion)
 vim.o.completeopt = 'noselect,menu,menuone,noinsert,popup'
 
+-- floating config
+vim.diagnostic.config { virtual_text = { current_line = true } }
+vim.o.winborder = 'single'
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 

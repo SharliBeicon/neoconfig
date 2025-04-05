@@ -142,11 +142,6 @@ return {
         },
       }
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-      vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
-      vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
-
       local servers = {
         jsonls = {},
         html = {},
@@ -226,7 +221,7 @@ return {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('blink.cmp').get_lsp_capabilities(server.capabilities)
             require('lspconfig')[server_name].setup(server)
           end,
         },
@@ -329,7 +324,7 @@ return {
         },
       },
       snippets = { preset = 'luasnip' },
-      fuzzy = { implementation = 'rust' },
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
       signature = { enabled = true },
     },
   },
