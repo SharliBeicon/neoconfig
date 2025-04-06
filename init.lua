@@ -1,5 +1,3 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
-
 -- Set <space> as leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -95,7 +93,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.g.base46_cache = vim.fn.stdpath 'data' .. '/base46_cache/'
 
 -- user event that loads after UIEnter + only if file buf is there
 vim.api.nvim_create_autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
@@ -122,6 +119,8 @@ vim.api.nvim_create_autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
     end
   end,
 })
+
+vim.g.base46_cache = vim.fn.stdpath 'data' .. '/base46_cache/'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
