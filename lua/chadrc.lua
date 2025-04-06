@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = 'kanagawa', -- default theme
+    theme = "kanagawa", -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {},
@@ -11,22 +11,22 @@ local options = {
   ui = {
     cmp = {
       icons_left = true, -- only for non-atom styles!
-      style = 'default', -- default/flat_light/flat_dark/atom/atom_colored
+      style = "default", -- default/flat_light/flat_dark/atom/atom_colored
       abbr_maxwidth = 60,
       format_colors = {
         tailwind = true, -- will work for css lsp too
-        icon = '󱓻',
+        icon = "󱓻",
       },
     },
 
-    telescope = { style = 'bordered' }, -- borderless / bordered
+    telescope = { style = "bordered" }, -- borderless / bordered
 
     statusline = {
       enabled = true,
-      theme = 'minimal', -- default/vscode/vscode_colored/minimal
+      theme = "minimal", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = 'block',
+      separator_style = "block",
       order = nil,
       modules = nil,
     },
@@ -35,7 +35,7 @@ local options = {
     tabufline = {
       enabled = true,
       lazyload = true,
-      order = { 'treeOffset', 'buffers', 'tabs', 'btns' },
+      order = { "treeOffset", "buffers", "tabs", "btns" },
       modules = nil,
       bufwidth = 21,
     },
@@ -43,64 +43,63 @@ local options = {
   nvdash = {
     load_on_startup = true,
     header = {
-      '░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░',
-      '░    ░░░░░   ░   ░░░░░░░░░   ░   ░   ░░░░░░░   ░',
-      '▒  ▒   ▒▒▒   ▒▒   ▒▒▒▒▒▒▒   ▒▒   ▒  ▒   ▒▒▒    ▒',
-      '▒   ▒   ▒▒   ▒▒▒   ▒▒▒▒▒   ▒▒▒   ▒   ▒   ▒ ▒   ▒',
-      '▓   ▓▓   ▓   ▓▓▓▓   ▓▓▓   ▓▓▓▓   ▓   ▓▓   ▓▓   ▓',
-      '▓   ▓▓▓  ▓   ▓▓▓▓▓   ▓   ▓▓▓▓▓   ▓   ▓▓▓  ▓▓   ▓',
-      '▓   ▓▓▓▓  ▓  ▓▓▓▓▓▓     ▓▓▓▓▓▓   ▓   ▓▓▓▓▓▓▓   ▓',
-      '█   ██████   ███████   ███████   █   ███████   █',
-      '████████████████████████████████████████████████',
-      '',
-      '',
+      "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░",
+      "░    ░░░░░   ░   ░░░░░░░░░   ░   ░   ░░░░░░░   ░",
+      "▒  ▒   ▒▒▒   ▒▒   ▒▒▒▒▒▒▒   ▒▒   ▒  ▒   ▒▒▒    ▒",
+      "▒   ▒   ▒▒   ▒▒▒   ▒▒▒▒▒   ▒▒▒   ▒   ▒   ▒ ▒   ▒",
+      "▓   ▓▓   ▓   ▓▓▓▓   ▓▓▓   ▓▓▓▓   ▓   ▓▓   ▓▓   ▓",
+      "▓   ▓▓▓  ▓   ▓▓▓▓▓   ▓   ▓▓▓▓▓   ▓   ▓▓▓  ▓▓   ▓",
+      "▓   ▓▓▓▓  ▓  ▓▓▓▓▓▓     ▓▓▓▓▓▓   ▓   ▓▓▓▓▓▓▓   ▓",
+      "█   ██████   ███████   ███████   █   ███████   █",
+      "████████████████████████████████████████████████",
+      "",
+      "",
     },
 
     buttons = {
       {
         txt = function()
-          local stats = require('lazy').stats()
-          local ms = math.floor(stats.startuptime) .. ' ms'
-          return '🚀 Loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms
+          local stats = require("lazy").stats()
+          local ms = math.floor(stats.startuptime) .. " ms"
+          return "🚀 Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
         end,
-        hl = 'NvDashFooter',
+        hl = "NvDashFooter",
         no_gap = true,
       },
 
-      { txt = '─', hl = 'NvDashFooter', no_gap = true, rep = true },
+      { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
     },
   },
   term = {
     base46_colors = true,
     winopts = { number = false, relativenumber = false },
-    sizes = { sp = 0.3, vsp = 0.2, ['bo sp'] = 0.3, ['bo vsp'] = 0.2 },
+    sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
     float = {
-      relative = 'editor',
+      relative = "editor",
       row = 0.3,
       col = 0.25,
       width = 0.5,
       height = 0.4,
-      border = 'single',
+      border = "single",
     },
   },
 
   lsp = { signature = true },
 
   cheatsheet = {
-    theme = 'simple', -- simple/grid
-    excluded_groups = { 'terminal (t)', 'autopairs', 'Nvim', 'Opens' }, -- can add group name or with mode
+    theme = "simple", -- simple/grid
+    excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
   },
 
   mason = { pkgs = {}, skip = {} },
 
   colorify = {
     enabled = true,
-    mode = 'virtual', -- fg, bg, virtual
-    virt_text = '󱓻 ',
+    mode = "virtual", -- fg, bg, virtual
+    virt_text = "󱓻 ",
     highlight = { hex = true, lspvars = true },
   },
 }
 
-local status, chadrc = pcall(require, 'chadrc')
-return vim.tbl_deep_extend('force', options, status and chadrc or {})
-
+local status, chadrc = pcall(require, "chadrc")
+return vim.tbl_deep_extend("force", options, status and chadrc or {})
