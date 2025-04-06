@@ -19,7 +19,7 @@ local options = {
       },
     },
 
-    telescope = { style = 'borderless' }, -- borderless / bordered
+    telescope = { style = 'bordered' }, -- borderless / bordered
 
     statusline = {
       enabled = true,
@@ -103,3 +103,4 @@ local options = {
 
 local status, chadrc = pcall(require, 'chadrc')
 return vim.tbl_deep_extend('force', options, status and chadrc or {})
+

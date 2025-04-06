@@ -1,3 +1,5 @@
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+
 -- Set <space> as leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -15,9 +17,11 @@ vim.opt.relativenumber = true
 -- Mouse mode enable
 vim.opt.mouse = 'a'
 
--- Sync vim and OS clipboard
 vim.schedule(function()
+  -- Sync vim and OS clipboard
   vim.opt.clipboard = 'unnamedplus'
+  -- Load custom mappings
+  require "mappings"
 end)
 
 -- Enable break indent
@@ -60,16 +64,11 @@ vim.opt.confirm = true
 -- set options for insert completion (ins-completion)
 vim.o.completeopt = 'noselect,menu,menuone,noinsert,popup'
 
--- floating config
-vim.diagnostic.config { virtual_text = { current_line = true } }
-vim.o.winborder = 'single'
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Keybinds to make split navigation easier.
@@ -124,10 +123,6 @@ vim.api.nvim_create_autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
   end,
 })
 
--- Border to floating windows
-vim.api.nvim_set_hl(0, 'HoverBorder', { fg = '#e86671', bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#61afef', bg = 'NONE' })
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -140,9 +135,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { import = 'plugins.code' },
-  { import = 'plugins.misc' },
-  { import = 'plugins.ui' },
+  { import = 'plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -165,6 +158,11 @@ require('lazy').setup({
   },
 })
 --
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has "win32" ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
 for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
   dofile(vim.g.base46_cache .. v)
