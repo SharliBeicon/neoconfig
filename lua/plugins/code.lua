@@ -10,11 +10,19 @@ return {
         else
           return {
             timeout_ms = 500,
-            lsp_format = 'fallback',
+            lsp_format = "fallback",
           }
         end
       end,
-      formatters_by_ft = { lua = { "stylua" } },
+      formatters_by_ft = {
+        lua = { "stylua" },
+        rust = { "rustfmt" },
+        javascript = { "prettierd" },
+        toml = { "taplo" },
+        markdown = { "mdformat" },
+        python = { "black" },
+        zig = { "zigfmt" },
+      },
     },
   },
   {
@@ -26,34 +34,34 @@ return {
   },
   -- Highlight todo, notes, etc in comments
   {
-    'folke/todo-comments.nvim',
-    event = 'VimEnter',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
   },
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
     opts = {},
   },
   {
-    'kdheepak/lazygit.nvim',
+    "kdheepak/lazygit.nvim",
     cmd = {
-      'LazyGit',
-      'LazyGitConfig',
-      'LazyGitCurrentFile',
-      'LazyGitFilter',
-      'LazyGitFilterCurrentFile',
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
     },
     -- optional for floating window border decoration
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      "nvim-lua/plenary.nvim",
     },
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-      { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
-  }
+  },
 }
