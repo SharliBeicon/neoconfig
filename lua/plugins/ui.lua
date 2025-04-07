@@ -6,6 +6,10 @@ return {
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
+      pcall(function()
+	dofile(vim.g.base46_cache .. 'syntax')
+	dofile(vim.g.base46_cache .. 'treesitter')
+      end)
       return require "configs.treesitter"
     end,
     config = function(_, opts)

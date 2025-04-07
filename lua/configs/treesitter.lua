@@ -1,8 +1,3 @@
-pcall(function()
-	dofile(vim.g.base46_cache .. 'syntax')
-	dofile(vim.g.base46_cache .. 'treesitter')
-end)
-
 return {
 	ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust' },
 	auto_install = true,
