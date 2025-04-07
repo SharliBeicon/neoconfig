@@ -1,51 +1,55 @@
 return {
+  "onsails/lspkind.nvim",
   {
-    'folke/lazydev.nvim',
-    ft = 'lua',
+    "folke/lazydev.nvim",
+    ft = "lua",
     opts = {
       library = {
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
   },
   { -- Autocompletion
-    'saghen/blink.cmp',
-    event = 'VimEnter',
-    version = '1.*',
+    "saghen/blink.cmp",
+    event = "VimEnter",
+    version = "1.*",
     dependencies = {
       -- Snippet Engine
       {
-        'L3MON4D3/LuaSnip',
-        version = '2.*',
+        "L3MON4D3/LuaSnip",
+        version = "2.*",
         build = (function()
           -- Build Step is needed for regex support in snippets.
           -- This step is not supported in many windows environments.
           -- Remove the below condition to re-enable on windows.
-          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+          if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
             return
           end
-          return 'make install_jsregexp'
+          return "make install_jsregexp"
         end)(),
         dependencies = {
           {
-            'rafamadriz/friendly-snippets',
+            "rafamadriz/friendly-snippets",
             config = function()
               -- vscode format
-              require('luasnip.loaders.from_vscode').lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
-              require('luasnip.loaders.from_vscode').lazy_load { paths = vim.g.vscode_snippets_path or '' }
+              require("luasnip.loaders.from_vscode").lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
+              require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.vscode_snippets_path or "" }
 
               -- snipmate format
-              require('luasnip.loaders.from_snipmate').load()
-              require('luasnip.loaders.from_snipmate').lazy_load { paths = vim.g.snipmate_snippets_path or '' }
+              require("luasnip.loaders.from_snipmate").load()
+              require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snippets_path or "" }
 
               -- lua format
-              require('luasnip.loaders.from_lua').load()
-              require('luasnip.loaders.from_lua').lazy_load { paths = vim.g.lua_snippets_path or '' }
+              require("luasnip.loaders.from_lua").load()
+              require("luasnip.loaders.from_lua").lazy_load { paths = vim.g.lua_snippets_path or "" }
 
-              vim.api.nvim_create_autocmd('InsertLeave', {
+              vim.api.nvim_create_autocmd("InsertLeave", {
                 callback = function()
-                  if require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()] and not require('luasnip').session.jump_active then
-                    require('luasnip').unlink_current()
+                  if
+                    require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+                    and not require("luasnip").session.jump_active
+                  then
+                    require("luasnip").unlink_current()
                   end
                 end,
               })
@@ -54,10 +58,10 @@ return {
         },
         opts = {},
       },
-      'folke/lazydev.nvim',
+      "folke/lazydev.nvim",
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
-    opts = require("configs.cmp")
+    opts = require "configs.cmp",
   },
 }
