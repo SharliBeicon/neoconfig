@@ -1,8 +1,3 @@
-dofile(vim.g.base46_cache .. "telescope")
-
-pcall(require('telescope').load_extension, 'fzf')
-pcall(require('telescope').load_extension, 'ui-select')
-
 return {
 defaults = {
 prompt_prefix = "   ",

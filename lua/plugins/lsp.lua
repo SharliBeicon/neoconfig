@@ -3,6 +3,7 @@ return {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonUpdate" },
     opts = function()
+      dofile(vim.g.base46_cache .. "mason")
       return require "configs.mason"
     end,
   },
