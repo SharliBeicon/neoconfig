@@ -1,12 +1,12 @@
 local options = {
   base46 = {
-    theme = "kanagawa", -- default theme
+    theme = "onenord_light", -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "kanagawa", "blossom_light" },
+    theme_toggle = { "kanagawa", "onenord_light" },
   },
 
   ui = {
@@ -85,7 +85,7 @@ local options = {
     },
   },
 
-  lsp = { signature = true },
+  lsp = { signature = false },
 
   cheatsheet = {
     theme = "simple", -- simple/grid
